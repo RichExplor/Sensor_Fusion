@@ -112,19 +112,28 @@ Using database KITTI-07 run this code.
 
 ### 5.1 run mask-rcnn
 **下载基于ROS话题发布的mask-rcnn前端代码。[mask-rcnn ros版本](https://download.csdn.net/download/qq_37568167/36765493)**
-
+**在ADVIO数据集下测试**
 Copy the above code to the Sensor_fusion folder
 
 ```
-cd catkin_ws/src/Sensor_fusion
-unzip Mask-RCNN
-cd script/mask_rcnn
-./run_build.sh
-cd ..
-./run_detect.sh
+    cd catkin_ws/src/Sensor_fusion
+    unzip Mask-RCNN
+    cd script/mask_rcnn
+    ./run_build.sh
+    cd ..
+    ./run_detect.sh
 ```
 
 ### 5.2 run visual estimation
+```
+    cd catkin_ws
+    source devel/setup.bash
+    roslaunch Sensor_fusion module_visual_mask.launch
+```
+
+```
+    rosbag plag kitti_07.bag --pause --clock -r0.5
+```
 
 ## 6.Acknowledgements
 Thanks for [F-LOAM](https://github.com/wh200720041/floam) and [VINS-Mono](https://github.com/HKUST-Aerial-Robotics/VINS-Mono).

@@ -64,6 +64,13 @@ file(GLOB visual_feature_files
      "src/visual_inertial/feature_tracker/camera_models/*.cc"
 )
 
+file(GLOB visual_feature_mask_files
+    "src/visual_inertial/feature_tracker/parameters.cpp"
+     "src/visual_inertial/feature_tracker/feature_tracker.cpp"
+     "src/visual_inertial/feature_tracker/feature_tracker_node_mask.cpp" 
+     "src/visual_inertial/feature_tracker/camera_models/*.cc"
+)
+
 file(GLOB visual_estimator_files
     "src/visual_inertial/vins_estimator/*.cpp"
     "src/visual_inertial/vins_estimator/factor/*.cpp"
@@ -91,6 +98,10 @@ file(GLOB global_fusion_files
 # visual feature
 add_executable(${PROJECT_NAME}_visual_feature ${visual_feature_files})
 target_link_libraries(${PROJECT_NAME}_visual_feature  ${catkin_LIBRARIES} ${OpenCV_LIBS} ${CERES_LIBRARIES} ${PCL_LIBRARIES})
+
+# visual feature mask
+add_executable(${PROJECT_NAME}_visual_feature_mask ${visual_feature_mask_files})
+target_link_libraries(${PROJECT_NAME}_visual_feature_mask  ${catkin_LIBRARIES} ${OpenCV_LIBS} ${CERES_LIBRARIES} ${PCL_LIBRARIES})
 
 # visual eatimator
 add_executable(${PROJECT_NAME}_visual_eatimator ${visual_estimator_files})
