@@ -464,7 +464,7 @@ void process()
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "Sensor_fusion_visual_feature_mask");
+    ros::init(argc, argv, "Sensor_fusion_visual_feature");
     ros::NodeHandle n("~");
     // ros::NodeHandle n;
     ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Info);
@@ -491,8 +491,8 @@ int main(int argc, char **argv)
 
     printf("load is successful!!!!! \n");
 
-    ros::Subscriber sub_img = n.subscribe<sensor_msgs::Image>("/feature_mask/image_img", 1000, image_callback);
-    ros::Subscriber mask_img = n.subscribe<sensor_msgs::Image>("/feature_mask/image_mask", 1000, mask_callback);
+    ros::Subscriber sub_img = n.subscribe<sensor_msgs::Image>("/feature_tracker_mask/image_img", 1000, image_callback);
+    ros::Subscriber mask_img = n.subscribe<sensor_msgs::Image>("/feature_tracker_mask/image_mask", 1000, mask_callback);
 
     pub_img = n.advertise<sensor_msgs::PointCloud>("feature", 1000);
     pub_match = n.advertise<sensor_msgs::Image>("feature_img",1000);
