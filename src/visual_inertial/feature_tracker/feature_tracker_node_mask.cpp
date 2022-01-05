@@ -374,6 +374,12 @@ void imageMaskProcess(const sensor_msgs::ImageConstPtr &img_msg, const sensor_ms
         feature_points->channels.push_back(v_of_point);
         feature_points->channels.push_back(velocity_x_of_point);
         feature_points->channels.push_back(velocity_y_of_point);
+
+        sensor_msgs::ChannelFloat32 depth_points;
+        depth_points.name = "depth";
+        depth_points.values.resize(feature_points->points.size(), -1);
+        feature_points->channels.push_back(depth_points);
+
         ROS_DEBUG("publish %f, at %f", feature_points->header.stamp.toSec(), ros::Time::now().toSec());
         // skip the first image; since no optical speed on frist image
         if (!init_pub)
@@ -400,12 +406,7 @@ void imageMaskProcess(const sensor_msgs::ImageConstPtr &img_msg, const sensor_ms
             for (unsigned int j = 0; j < trackerData[i].cur_pts.size(); j++)
             {
                 double len = std::min(1.0, 1.0 * trackerData[i].track_cnt[j] / WINDOW_SIZE);
-                // cv::circle(tmp_img, trackerData[i].cur_pts[j], 2, cv::Scalar(255 * (1 - len), 0, 255 * len), 2);  // 越红说明跟踪的越长
                 cv::circle(tmp_img, trackerData[i].cur_pts[j], 2, cv::Scalar(0, 0, 255), 2);  // 越红说明跟踪的越长
-
-                // char name[10];
-                // sprintf(name, "%d", trackerData[i].ids[j]);
-                // cv::putText(tmp_img, name, trackerData[i].cur_pts[j], cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 0));
             }
         }
         // cv::imshow("vis", stereo_img);
