@@ -81,7 +81,7 @@ Copy the above code to the Sensor_fusion folder
 ```
 
 ```
-    rosbag plag ADVIO-05.bag --pause --clock -r0.5
+    rosbag plag ADVIO-05.bag --pause -r0.5
 ```
 
 ## 6.Acknowledgements
