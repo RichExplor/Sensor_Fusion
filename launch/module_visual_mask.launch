@@ -24,9 +24,9 @@
     </node> -->
 
     <!-- rviz -->
-    <include file="$(find Sensor_fusion)/launch/module_rviz.launch" />
+    <!-- <include file="$(find Sensor_fusion)/launch/module_rviz.launch" /> -->
 
     <!-- Image conversion -->
-    <node pkg="image_transport" type="republish" name="vins_republish" args="compressed in:=/galaxy_camera/image raw out:=/galaxy_camera/image" output="screen" respawn="true"/>
+    <!-- <node pkg="image_transport" type="republish" name="vins_republish" args="compressed in:=/galaxy_camera/image raw out:=/galaxy_camera/image" output="screen" respawn="true"/> -->
 
 </launch>
