@@ -12,7 +12,7 @@ exRotation: !!opencv-matrix
    cols: 3
    dt: d
    data: [-0.0250049,    -0.999688,   0.00068552,
-           0.000937395, -0.000709336,    -0.999999,
+           0.000937395, -0.000709336,   -0.999999,
            0.999687,   -0.0250042,  0.000954885]
 
 #Translation from camera frame to imu frame, imu^T_cam
