@@ -69,8 +69,8 @@ Copy the above code to the Sensor_fusion folder
     unzip Mask-RCNN
     cd script/mask_rcnn
     ./run_build.sh
-    cd ..
-    ./run_detect.sh
+    cd detectron2/Visual_Frand
+    ./run_detect_mask.sh
 ```
 
 ### 5.2 run visual estimation
