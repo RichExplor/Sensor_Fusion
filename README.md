@@ -109,10 +109,12 @@ Using database KITTI-07 run this code.
 </p>
 
 ## 5. Add Mask-RCNN
-
 ### 5.1 run mask-rcnn
+
 **下载基于ROS话题发布的mask-rcnn前端代码。[mask-rcnn ros版本](https://download.csdn.net/download/qq_37568167/36765493)**
-**在ADVIO数据集下测试**
+
+**在动态场景[ADVIO数据集](https://github.com/AaltoVision/ADVIO)下测试**
+
 Copy the above code to the Sensor_fusion folder
 
 ```
@@ -132,7 +134,7 @@ Copy the above code to the Sensor_fusion folder
 ```
 
 ```
-    rosbag plag kitti_07.bag --pause --clock -r0.5
+    rosbag plag ADVIO-05.bag --pause --clock -r0.5
 ```
 
 ## 6.Acknowledgements

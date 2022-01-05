@@ -1,6 +1,6 @@
 <launch>
-    <arg name="config_path" default = "$(find Sensor_fusion)/config/daheng/daheng_config.yaml" />
-    <!-- <arg name="config_path" default = "$(find Sensor_fusion)/config/iphone/iphone_config_wind.yaml" /> -->
+    <!-- <arg name="config_path" default = "$(find Sensor_fusion)/config/daheng/daheng_config.yaml" /> -->
+    <arg name="config_path" default = "$(find Sensor_fusion)/config/iphone/iphone_config.yaml" />
 	<!-- <arg name="config_path" default = "$(find Sensor_fusion)/config/kitti/kitti_config.yaml" /> -->
     <arg name="vins_path" default = "$(find Sensor_fusion)/" />
 
