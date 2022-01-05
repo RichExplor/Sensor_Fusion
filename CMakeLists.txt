@@ -57,12 +57,12 @@ include_directories(
 
 
 ## Visual_Inertial
-file(GLOB visual_feature_files
-    "src/visual_inertial/feature_tracker/parameters.cpp"
-     "src/visual_inertial/feature_tracker/feature_tracker.cpp"
-     "src/visual_inertial/feature_tracker/feature_tracker_node.cpp" 
-     "src/visual_inertial/feature_tracker/camera_models/*.cc"
-)
+# file(GLOB visual_feature_files
+#     "src/visual_inertial/feature_tracker/parameters.cpp"
+#      "src/visual_inertial/feature_tracker/feature_tracker.cpp"
+#      "src/visual_inertial/feature_tracker/feature_tracker_node.cpp" 
+#      "src/visual_inertial/feature_tracker/camera_models/*.cc"
+# )
 
 file(GLOB visual_feature_mask_files
     "src/visual_inertial/feature_tracker/parameters.cpp"
@@ -95,9 +95,9 @@ file(GLOB global_fusion_files
 
 ####Visual_Inertial
 
-# visual feature
-add_executable(${PROJECT_NAME}_visual_feature ${visual_feature_files})
-target_link_libraries(${PROJECT_NAME}_visual_feature  ${catkin_LIBRARIES} ${OpenCV_LIBS} ${CERES_LIBRARIES} ${PCL_LIBRARIES})
+# # visual feature
+# add_executable(${PROJECT_NAME}_visual_feature ${visual_feature_files})
+# target_link_libraries(${PROJECT_NAME}_visual_feature  ${catkin_LIBRARIES} ${OpenCV_LIBS} ${CERES_LIBRARIES} ${PCL_LIBRARIES})
 
 # visual feature mask
 add_executable(${PROJECT_NAME}_visual_feature_mask ${visual_feature_mask_files})

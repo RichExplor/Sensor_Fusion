@@ -464,7 +464,7 @@ void process()
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "Sensor_fusion_visual_feature");
+    ros::init(argc, argv, "Sensor_fusion_visual_feature_mask");
     ros::NodeHandle n("~");
     // ros::NodeHandle n;
     ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Info);

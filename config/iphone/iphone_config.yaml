@@ -3,7 +3,25 @@
 #common parameters
 imu_topic: "/imu0"
 image_topic: "/cam0/image_raw"
+lidar_topic: "/velodyne_points"
 output_path: "/home/lenovo/output/ADVIO/"
+
+# lidar to camera extrinsic
+exRotation: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [-0.0250049,    -0.999688,   0.00068552,
+           0.000937395, -0.000709336,    -0.999999,
+           0.999687,   -0.0250042,  0.000954885]
+
+#Translation from camera frame to imu frame, imu^T_cam
+exTranslation: !!opencv-matrix
+   rows: 3
+   cols: 1
+   dt: d
+   data: [-0.00428288, 0.019991, -0.00969694]
+
 
 #camera calibration 
 model_type: PINHOLE
@@ -20,6 +38,7 @@ projection_parameters:
    fy: 1079.3
    cx: 362.145
    cy: 636.3873
+
 # Extrinsic parameter between IMU and Camera.
 estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
                         # 1  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.
@@ -31,9 +50,9 @@ extrinsicRotation: !!opencv-matrix
    cols: 3
    dt: d
    data: [0.9999763379093255, -0.004079205042965442, -0.005539287650170447,
-           -0.004066386342107199, -0.9999890330121858, 0.0023234365646622014, 
-           -0.00554870467502187, -0.0023008567036498766, -0.9999819588046867]  
-        
+           -0.004066386342107199, -0.9999890330121858, 0.0023234365646622014,
+           -0.00554870467502187, -0.0023008567036498766, -0.9999819588046867]
+
 #Translation from camera frame to imu frame, imu^T_cam
 extrinsicTranslation: !!opencv-matrix
    rows: 3
@@ -55,10 +74,10 @@ max_solver_time: 0.04  # max solver itration time (ms), to guarantee real time
 max_num_iterations: 8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0 # keyframe selection threshold (pixel)
 
-#imu parameters       The more accurate parameters you provide, the better performance
-acc_n: 4.8e-03          # accelerometer measurement noise standard deviation. #0.2   0.04
-gyr_n: 2.4e-03         # gyroscope measurement noise standard deviation.     #0.05  0.004
-acc_w: 2.1e-04         # accelerometer bias random work noise standard deviation.  #0.02
+#imu parameters       The more accurate parameters you provide, the worse performance
+acc_n: 4.8e-03         # accelerometer measurement noise standard deviation. #0.2
+gyr_n: 2.4e-03        # gyroscope measurement noise standard deviation.     #0.05
+acc_w: 2.1e-04        # accelerometer bias random work noise standard deviation.  #0.02
 gyr_w: 5.1e-05      # gyroscope bias random work noise standard deviation.     #4.0e-5
 g_norm: 9.79754     # gravity magnitude
 
@@ -66,11 +85,11 @@ g_norm: 9.79754     # gravity magnitude
 loop_closure: 1                    # start loop closure
 load_previous_pose_graph: 0        # load and reuse previous pose graph; load from 'pose_graph_save_path'
 fast_relocalization: 0             # useful in real-time and large project
-pose_graph_save_path: "/home/lenovo/output/pose_graph/" # save and load path
+pose_graph_save_path: "/home/lenovo/output/" # save and load path
 
 #unsynchronization parameters
-estimate_td: 0                     # online estimate time offset between camera and imu
-td: 0.0                             # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock) 0.013
+estimate_td: 0                      # online estimate time offset between camera and imu
+td: 0.0                             # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
 
 #rolling shutter parameters
 rolling_shutter: 0                  # 0: global shutter camera, 1: rolling shutter camera
