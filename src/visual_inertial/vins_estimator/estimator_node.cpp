@@ -348,7 +348,7 @@ void process()
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "MultiSensor_fusion_visual_eatimator");
+    ros::init(argc, argv, "Sensor_fusion_visual_eatimator");
     ros::NodeHandle n("~");
     ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Info);
     readParameters(n);
@@ -361,9 +361,9 @@ int main(int argc, char **argv)
     registerPub(n);
 
     ros::Subscriber sub_imu = n.subscribe(IMU_TOPIC, 2000, imu_callback, ros::TransportHints().tcpNoDelay());
-    ros::Subscriber sub_image = n.subscribe("/MultiSensor_fusion_visual_feature/feature", 2000, feature_callback);
-    ros::Subscriber sub_restart = n.subscribe("/MultiSensor_fusion_visual_feature/restart", 2000, restart_callback);
-    ros::Subscriber sub_relo_points = n.subscribe("/MultiSensor_fusion_pose_graph/match_points", 2000, relocalization_callback);
+    ros::Subscriber sub_image = n.subscribe("/Sensor_fusion_visual_feature/feature", 2000, feature_callback);
+    ros::Subscriber sub_restart = n.subscribe("/Sensor_fusion_visual_feature/restart", 2000, restart_callback);
+    ros::Subscriber sub_relo_points = n.subscribe("/Sensor_fusion_pose_graph/match_points", 2000, relocalization_callback);
 
     std::thread measurement_process{process};
     ros::spin();

@@ -105,7 +105,7 @@ void lidar_process()
 
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "MultiSensor_fusion_featureExtractionNode");
+    ros::init(argc, argv, "Sensor_fusion_featureExtractionNode");
     ros::NodeHandle nh;
 
     // load patamerater

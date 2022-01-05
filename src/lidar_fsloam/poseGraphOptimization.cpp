@@ -590,7 +590,7 @@ void loopDetection()
 
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "MultiSensor_fusion_poseGraphOptimization");
+    ros::init(argc, argv, "Sensor_fusion_poseGraphOptimization");
     ros::NodeHandle nh;
 
     // 关键帧相关参数

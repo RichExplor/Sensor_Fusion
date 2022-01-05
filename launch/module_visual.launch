@@ -1,20 +1,20 @@
 <launch>
-    <arg name="config_path" default = "$(find MultiSensor_fusion)/config/daheng/daheng_config.yaml" />
-    <!-- <arg name="config_path" default = "$(find MultiSensor_fusion)/config/iphone/iphone_config_wind.yaml" /> -->
-	<!-- <arg name="config_path" default = "$(find MultiSensor_fusion)/config/kitti/kitti_config.yaml" /> -->
-    <arg name="vins_path" default = "$(find MultiSensor_fusion)/" />
+    <!-- <arg name="config_path" default = "$(find Sensor_fusion)/config/daheng/daheng_config.yaml" /> -->
+    <!-- <arg name="config_path" default = "$(find Sensor_fusion)/config/iphone/iphone_config_wind.yaml" /> -->
+	<arg name="config_path" default = "$(find Sensor_fusion)/config/kitti/kitti_config.yaml" />
+    <arg name="vins_path" default = "$(find Sensor_fusion)/" />
 
-    <node pkg="MultiSensor_fusion" type="MultiSensor_fusion_visual_feature" name="MultiSensor_fusion_visual_feature" output="screen">
+    <node pkg="Sensor_fusion" type="Sensor_fusion_visual_feature" name="Sensor_fusion_visual_feature" output="log">
         <param name="config_file" type="string" value="$(arg config_path)" />
         <param name="vins_folder" type="string" value="$(arg vins_path)" />
     </node>
 
-    <node pkg="MultiSensor_fusion" type="MultiSensor_fusion_visual_eatimator" name="MultiSensor_fusion_visual_eatimator" output="screen">
+    <node pkg="Sensor_fusion" type="Sensor_fusion_visual_eatimator" name="Sensor_fusion_visual_eatimator" output="screen">
        <param name="config_file" type="string" value="$(arg config_path)" />
        <param name="vins_folder" type="string" value="$(arg vins_path)" />
     </node>
 
-    <node pkg="MultiSensor_fusion" type="MultiSensor_fusion_pose_graph" name="MultiSensor_fusion_pose_graph" output="screen">
+    <node pkg="Sensor_fusion" type="Sensor_fusion_pose_graph" name="Sensor_fusion_pose_graph" output="screen">
         <param name="config_file" type="string" value="$(arg config_path)" />
         <param name="vins_folder" type="string" value="$(arg vins_path)" />
         <param name="visualization_shift_x" type="int" value="0" />
@@ -24,7 +24,7 @@
     </node>
 
     <!-- rviz -->
-    <include file="$(find MultiSensor_fusion)/launch/module_rviz.launch" />
+    <include file="$(find Sensor_fusion)/launch/module_rviz.launch" />
 
     <!-- Image conversion -->
     <node pkg="image_transport" type="republish" name="vins_republish" args="compressed in:=/galaxy_camera/image raw out:=/galaxy_camera/image" output="screen" respawn="true"/>

@@ -394,7 +394,7 @@ void processing()
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "MultiSensor_fusion_visual_feature");
+    ros::init(argc, argv, "Sensor_fusion_visual_feature");
     ros::NodeHandle n("~");
     ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Info);
     readParameters(n);

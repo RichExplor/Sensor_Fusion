@@ -182,7 +182,7 @@ void ProcessEstimator()
 
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "MultiSensor_fusion_EstimationMapping");
+    ros::init(argc, argv, "Sensor_fusion_EstimationMapping");
     ros::NodeHandle nh;
 
     Estimator.initParameter(nh);

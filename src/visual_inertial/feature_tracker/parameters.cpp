@@ -60,10 +60,8 @@ void readParameters(ros::NodeHandle &n)
     cv::cv2eigen(cv_R, eigen_R);
     cv::cv2eigen(cv_T, eigen_T);
 
-    std::cout<<"eigen_R: = "<<eigen_R<<std::endl;
     Eigen::Quaterniond Q(eigen_R);
     eigen_R = Q.normalized();
-    std::cout<<"eigen_R: = "<<eigen_R<<std::endl;
     LIDAR_CAMERA_EX = Eigen::Matrix4d::Identity();
     LIDAR_CAMERA_EX.block(0,0,3,3) = eigen_R;
     LIDAR_CAMERA_EX.block(0,3,3,1) = eigen_T;

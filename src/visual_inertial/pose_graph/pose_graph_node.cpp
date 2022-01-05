@@ -459,7 +459,7 @@ void command()
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "MultiSensor_fusion_pose_graph");
+    ros::init(argc, argv, "Sensor_fusion_pose_graph");
     ros::NodeHandle n("~");
     posegraph.registerPub(n);
 
@@ -534,13 +534,13 @@ int main(int argc, char **argv)
 
     fsSettings.release();
 
-    ros::Subscriber sub_imu_forward = n.subscribe("/MultiSensor_fusion_visual_eatimator/imu_propagate", 2000, imu_forward_callback);
-    ros::Subscriber sub_vio = n.subscribe("/MultiSensor_fusion_visual_eatimator/odometry", 2000, vio_callback);
+    ros::Subscriber sub_imu_forward = n.subscribe("/Sensor_fusion_visual_eatimator/imu_propagate", 2000, imu_forward_callback);
+    ros::Subscriber sub_vio = n.subscribe("/Sensor_fusion_visual_eatimator/odometry", 2000, vio_callback);
     ros::Subscriber sub_image = n.subscribe(IMAGE_TOPIC, 2000, image_callback);
-    ros::Subscriber sub_pose = n.subscribe("/MultiSensor_fusion_visual_eatimator/keyframe_pose", 2000, pose_callback);
-    ros::Subscriber sub_extrinsic = n.subscribe("/MultiSensor_fusion_visual_eatimator/extrinsic", 2000, extrinsic_callback);
-    ros::Subscriber sub_point = n.subscribe("/MultiSensor_fusion_visual_eatimator/keyframe_point", 2000, point_callback);
-    ros::Subscriber sub_relo_relative_pose = n.subscribe("/MultiSensor_fusion_visual_eatimator/relo_relative_pose", 2000, relo_relative_pose_callback);
+    ros::Subscriber sub_pose = n.subscribe("/Sensor_fusion_visual_eatimator/keyframe_pose", 2000, pose_callback);
+    ros::Subscriber sub_extrinsic = n.subscribe("/Sensor_fusion_visual_eatimator/extrinsic", 2000, extrinsic_callback);
+    ros::Subscriber sub_point = n.subscribe("/Sensor_fusion_visual_eatimator/keyframe_point", 2000, point_callback);
+    ros::Subscriber sub_relo_relative_pose = n.subscribe("/Sensor_fusion_visual_eatimator/relo_relative_pose", 2000, relo_relative_pose_callback);
 
     pub_match_img = n.advertise<sensor_msgs::Image>("match_image", 1000);
     pub_camera_pose_visual = n.advertise<visualization_msgs::MarkerArray>("camera_pose_visual", 1000);

@@ -24,7 +24,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: depth_image
   - Class: rviz/Displays
     Help Height: 78
     Name: Displays
@@ -90,7 +90,7 @@ Visualization Manager:
       Displays:
         - Class: rviz/Image
           Enabled: true
-          Image Topic: /MultiSensor_fusion_visual_feature/depth_img
+          Image Topic: /Sensor_fusion_visual_feature/depth_img
           Max Value: 1
           Median window: 5
           Min Value: 0
@@ -102,7 +102,7 @@ Visualization Manager:
           Value: true
         - Class: rviz/Image
           Enabled: true
-          Image Topic: /MultiSensor_fusion_visual_feature/feature_img
+          Image Topic: /Sensor_fusion_visual_feature/feature_img
           Max Value: 1
           Median window: 5
           Min Value: 0
@@ -162,15 +162,15 @@ Visualization Manager:
           Radius: 0.0299999993
           Shaft Diameter: 0.100000001
           Shaft Length: 0.100000001
-          Topic: /MultiSensor_fusion_visual_eatimator/path
+          Topic: /Sensor_fusion_visual_eatimator/path
           Unreliable: false
           Value: true
         - Class: rviz/MarkerArray
           Enabled: true
-          Marker Topic: /MultiSensor_fusion_visual_eatimator/camera_pose_visual
+          Marker Topic: /Sensor_fusion_visual_eatimator/camera_pose_visual
           Name: camera_visual
           Namespaces:
-            {}
+            CameraPoseVisualization: true
           Queue Size: 100
           Value: true
         - Alpha: 1
@@ -198,12 +198,12 @@ Visualization Manager:
           Size (Pixels): 2
           Size (m): 0.00999999978
           Style: Points
-          Topic: /MultiSensor_fusion_visual_eatimator/point_cloud
+          Topic: /Sensor_fusion_visual_eatimator/point_cloud
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
           Value: true
-        - Alpha: 1
+        - Alpha: 0.5
           Autocompute Intensity Bounds: false
           Autocompute Value Bounds:
             Max Value: 10
@@ -212,10 +212,10 @@ Visualization Manager:
           Axis: Z
           Channel Name: intensity
           Class: rviz/PointCloud
-          Color: 30; 218; 146
+          Color: 255; 255; 255
           Color Transformer: FlatColor
           Decay Time: 3000
-          Enabled: false
+          Enabled: true
           Invert Rainbow: true
           Max Color: 0; 0; 0
           Max Intensity: 4096
@@ -228,11 +228,11 @@ Visualization Manager:
           Size (Pixels): 2
           Size (m): 0.5
           Style: Points
-          Topic: /MultiSensor_fusion_visual_eatimator/history_cloud
+          Topic: /Sensor_fusion_visual_eatimator/history_cloud
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: false
-          Value: false
+          Value: true
         - Class: rviz/TF
           Enabled: false
           Frame Timeout: 15
@@ -271,7 +271,7 @@ Visualization Manager:
           Radius: 0.0299999993
           Shaft Diameter: 0.100000001
           Shaft Length: 0.100000001
-          Topic: /MultiSensor_fusion_pose_graph/pose_graph_path
+          Topic: /Sensor_fusion_pose_graph/pose_graph_path
           Unreliable: false
           Value: true
         - Alpha: 1
@@ -294,12 +294,12 @@ Visualization Manager:
           Radius: 0.0299999993
           Shaft Diameter: 0.100000001
           Shaft Length: 0.100000001
-          Topic: /MultiSensor_fusion_pose_graph/base_path
+          Topic: /Sensor_fusion_pose_graph/base_path
           Unreliable: false
           Value: true
         - Class: rviz/MarkerArray
           Enabled: true
-          Marker Topic: /MultiSensor_fusion_pose_graph/camera_pose_visual
+          Marker Topic: /Sensor_fusion_pose_graph/camera_pose_visual
           Name: loop_visual
           Namespaces:
             {}
@@ -307,7 +307,7 @@ Visualization Manager:
           Value: true
         - Class: rviz/MarkerArray
           Enabled: true
-          Marker Topic: /MultiSensor_fusion_pose_graph/camera_pose_visual
+          Marker Topic: /Sensor_fusion_pose_graph/camera_pose_visual
           Name: camera_visual
           Namespaces:
             {}
@@ -315,7 +315,7 @@ Visualization Manager:
           Value: true
         - Class: rviz/Image
           Enabled: true
-          Image Topic: /MultiSensor_fusion_pose_graph/match_image
+          Image Topic: /Sensor_fusion_pose_graph/match_image
           Max Value: 1
           Median window: 5
           Min Value: 0
@@ -327,7 +327,7 @@ Visualization Manager:
           Value: true
         - Class: rviz/Marker
           Enabled: true
-          Marker Topic: /MultiSensor_fusion_pose_graph/key_odometrys
+          Marker Topic: /Sensor_fusion_pose_graph/key_odometrys
           Name: Marker
           Namespaces:
             {}
@@ -438,25 +438,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 103.230164
+      Distance: 103.890747
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.59567499
-        Y: -11.1879015
-        Z: 3.49920083e-05
+        X: 14.7726717
+        Y: -4.9422245
+        Z: -3.41749255e-05
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 1.18979669
+      Pitch: 1.56979632
       Target Frame: <Fixed Frame>
       Value: XYOrbit (rviz)
-      Yaw: 4.70717573
+      Yaw: 4.69719362
     Saved: ~
 Window Geometry:
   Displays:

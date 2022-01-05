@@ -47,7 +47,7 @@ std::mutex m_buf;
 //     car_mesh.action = visualization_msgs::Marker::ADD;
 //     car_mesh.id = 0;
 
-//     car_mesh.mesh_resource = "package://MultiSensor_fusion/src/global_fusion/models/car.dae";
+//     car_mesh.mesh_resource = "package://Sensor_fusion/src/global_fusion/models/car.dae";
 
 //     Eigen::Matrix3d rot;
 //     // rot << 0, 0, -1, 0, -1, 0, -1, 0, 0;
@@ -156,7 +156,7 @@ int main(int argc, char **argv)
     global_path = &globalEstimator.global_path;
 
     message_filters::Subscriber<nav_msgs::Odometry> sub_loam(n, "/aft_mapped_to_init", 100);  // /Odometry
-    message_filters::Subscriber<nav_msgs::Odometry> sub_vio(n, "/MultiSensor_fusion_visual_eatimator/odometry", 100);
+    message_filters::Subscriber<nav_msgs::Odometry> sub_vio(n, "/Sensor_fusion_visual_eatimator/odometry", 100);
     typedef message_filters::sync_policies::ApproximateTime<nav_msgs::Odometry, nav_msgs::Odometry> sync_pol;
     message_filters::Synchronizer<sync_pol> sync(sync_pol(10), sub_loam, sub_vio);
     sync.registerCallback(boost::bind(&Loam_Vio_callback, _1, _2));
@@ -205,7 +205,7 @@ void publish_car_model(double t, Eigen::Vector3d t_w_car, Eigen::Quaterniond q_w
     car_mesh.action = visualization_msgs::Marker::ADD;
     car_mesh.id = 0;
 
-    car_mesh.mesh_resource = "package://MultiSensor_fusion/src/global_fusion/models/car.dae";
+    car_mesh.mesh_resource = "package://Sensor_fusion/src/global_fusion/models/car.dae";
 
     Eigen::Matrix3d rot;
     rot << 0, 0, -1, 0, -1, 0, -1, 0, 0;
@@ -423,7 +423,7 @@ int main(int argc, char **argv)
 
     // ros::Subscriber sub_GPS = n.subscribe("/gps/fix", 100, GPS_callback);
     ros::Subscriber sub_loam = n.subscribe("/odometry/imu", 100, loam_callback);  // /aft_mapped_to_init
-    ros::Subscriber sub_vio = n.subscribe("/MultiSensor_fusion_visual_eatimator/odometry", 100, vio_callback); 
+    ros::Subscriber sub_vio = n.subscribe("/Sensor_fusion_visual_eatimator/odometry", 100, vio_callback); 
     pub_global_path = n.advertise<nav_msgs::Path>("global_path", 100);
     pub_global_odometry = n.advertise<nav_msgs::Odometry>("global_odometry", 100);
     pub_car = n.advertise<visualization_msgs::MarkerArray>("car_model", 1000);

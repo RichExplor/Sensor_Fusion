@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(MultiSensor_fusion)
+project(Sensor_fusion)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 set(CMAKE_BUILD_TYPE "Release")
