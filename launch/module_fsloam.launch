@@ -1,0 +1,17 @@
+<launch>
+
+    <!-- load lidar param  -->
+    <rosparam file="$(find MultiSensor_fusion)/config/kitti/velodyne_param_64.yaml" command="load" />
+    <!-- <rosparam file="$(find MultiSensor_fusion)/config/daheng/velodyne_param_32.yaml" command="load" /> -->
+
+    <!-- add node -->
+    <node pkg="MultiSensor_fusion" type="MultiSensor_fusion_featureExtractionNode" name="MultiSensor_fusion_featureExtractionNode" output="log" />
+    <node pkg="MultiSensor_fusion" type="MultiSensor_fusion_EstimationMapping"     name="MultiSensor_fusion_EstimationMapping"     output="log" />
+    <node pkg="MultiSensor_fusion" type="MultiSensor_fusion_poseGraphOptimization" name="MultiSensor_fusion_poseGraphOptimization" output="log" />
+
+    <node pkg="tf" type="static_transform_publisher" name="word2map_tf"  args="0 0 0 0 0 0 /world /map 10" />
+
+    <!-- rviz -->
+    <include file="$(find MultiSensor_fusion)/launch/module_rviz.launch" />
+
+</launch>
