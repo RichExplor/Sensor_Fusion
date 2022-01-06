@@ -332,8 +332,8 @@ void processing()
             // 1.转换点云消息为pcl
             pcl::PointCloud<PointType>::Ptr PointCloudFull(new pcl::PointCloud<PointType>());
             pcl::fromROSMsg(*laserCloudMsgs, *PointCloudFull);  // 转换消息类型
-            // std::cout<<"lidar time is " << laserCloudMsgs->header.stamp.toSec()<<" , image time is "<<imageMsgs->header.stamp.toSec()<<std::endl;
-            
+            publishCloud(&pub_PointCloud, PointCloudFull, imageMsgs->header.stamp, "world");  // 使用图像的时间戳
+
             // 2.滤除掉相机视野之外的点云
             pcl::PointCloud<PointType>::Ptr PointCloudFilter(new pcl::PointCloud<PointType>());
             for(size_t i = 0; i < PointCloudFull->size(); ++i)
@@ -349,7 +349,7 @@ void processing()
             pcl::transformPointCloud(*PointCloudFull, *PointCloudOffset, LIDAR_CAMERA_EX);
 
             *PointCloudFull = *PointCloudOffset;
-            publishCloud(&pub_PointCloud, PointCloudFull, laserCloudMsgs->header.stamp, "world");
+            // publishCloud(&pub_PointCloud, PointCloudFull, laserCloudMsgs->header.stamp, "world");
 
             // 4.获取特征点深度
             sensor_msgs::ChannelFloat32 depth_points = getFeatureDepth(PointCloudFull, show_img, feature_points->points);
@@ -429,12 +429,8 @@ int main(int argc, char **argv)
     pub_match = n.advertise<sensor_msgs::Image>("feature_img",1000);
     pub_restart = n.advertise<std_msgs::Bool>("restart",1000);
 
-    pub_PointCloud = n.advertise<sensor_msgs::PointCloud2>("cloud_filter", 1000);
+    pub_PointCloud = n.advertise<sensor_msgs::PointCloud2>("veloCloud", 1000);
     pub_DepthImg = n.advertise<sensor_msgs::Image>("depth_img", 1000);
-    /*
-    if (SHOW_TRACK)
-        cv::namedWindow("vis", cv::WINDOW_NORMAL);
-    */
 
     std::thread feature_thread{processing};
 

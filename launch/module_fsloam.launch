@@ -7,11 +7,11 @@
     <!-- add node -->
     <node pkg="Sensor_fusion" type="Sensor_fusion_featureExtractionNode" name="Sensor_fusion_featureExtractionNode" output="log" />
     <node pkg="Sensor_fusion" type="Sensor_fusion_EstimationMapping"     name="Sensor_fusion_EstimationMapping"     output="log" />
-    <node pkg="Sensor_fusion" type="Sensor_fusion_poseGraphOptimization" name="Sensor_fusion_poseGraphOptimization" output="log" />
+    <!-- <node pkg="Sensor_fusion" type="Sensor_fusion_poseGraphOptimization" name="Sensor_fusion_poseGraphOptimization" output="log" /> -->
 
     <node pkg="tf" type="static_transform_publisher" name="word2map_tf"  args="0 0 0 0 0 0 /world /map 10" />
 
     <!-- rviz -->
-    <include file="$(find Sensor_fusion)/launch/module_rviz.launch" />
+    <!-- <include file="$(find Sensor_fusion)/launch/module_rviz.launch" /> -->
 
 </launch>

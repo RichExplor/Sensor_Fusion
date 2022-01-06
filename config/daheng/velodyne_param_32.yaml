@@ -1,5 +1,5 @@
 # Topics
-lidarTolic: "/velodyne_points"  # /velodyne_points  /points_raw  /kitti/velo/pointcloud /velodyne_point_cloud
+lidarTolic: "/Sensor_fusion_visual_feature/veloCloud"  # /velodyne_points  /points_raw  /kitti/velo/pointcloud /velodyne_point_cloud
 # pose save
 # poseSaveTUM: "/home/lenovo/output/KITTI/"
 # poseSaveTUM: "/home/lenovo/output/MVSEC/"

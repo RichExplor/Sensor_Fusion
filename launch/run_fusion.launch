@@ -7,7 +7,7 @@
     <include file="$(find Sensor_fusion)/launch/module_global.launch" />
 
     <!-- lidar odometry -->
-    <include file="$(find Sensor_fusion)/launch/module_loam.launch" />
+    <include file="$(find Sensor_fusion)/launch/module_fsloam.launch" />
 
     <!-- rviz -->
     <include file="$(find Sensor_fusion)/launch/module_rviz.launch" />

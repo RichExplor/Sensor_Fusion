@@ -148,7 +148,6 @@ void GlobalOptimization::optimize()
                 iterVIONext++;
                 if(iterVIONext != localPoseMap.end())
                 {
-
                     // i，j时刻的相对位姿变换
                     Eigen::Matrix4d wTi = Eigen::Matrix4d::Identity();
                     Eigen::Matrix4d wTj = Eigen::Matrix4d::Identity();
