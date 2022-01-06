@@ -44,7 +44,7 @@ void GlobalOptimization::inputOdom(double t, Eigen::Vector3d OdomP, Eigen::Quate
     					     OdomQ.w(), OdomQ.x(), OdomQ.y(), OdomQ.z()};
     localPoseMap[t] = localPose;
 
-    // 使用最新vio位姿做变换
+    // 使用最新vio位姿做变换,变换到世界坐标系下
     Eigen::Quaterniond globalQ;
     globalQ = WGPS_T_WVIO.block<3, 3>(0, 0) * OdomQ;
     Eigen::Vector3d globalP = WGPS_T_WVIO.block<3, 3>(0, 0) * OdomP + WGPS_T_WVIO.block<3, 1>(0, 3);
@@ -165,7 +165,7 @@ void GlobalOptimization::optimize()
                     // 1. 利用相对i，j时刻位姿构建误差方程： q_ij和t_ij
                     ceres::CostFunction* vio_function = RelativeRTError::Create(iPj.x(), iPj.y(), iPj.z(),
                                                                                 iQj.w(), iQj.x(), iQj.y(), iQj.z(),
-                                                                                0.1, 0.01);
+                                                                                0.1, 0.01);  //0.1, 0.01
                     problem.AddResidualBlock(vio_function, NULL, q_array[i], t_array[i], q_array[i+1], t_array[i+1]);
 
                     // 2. 构建相对旋转误差

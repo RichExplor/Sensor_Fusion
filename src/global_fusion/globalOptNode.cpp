@@ -57,8 +57,8 @@ void Loam_Vio_callback(const nav_msgs::Odometry::ConstPtr& loam_msg, const nav_m
     // vio_msg processing
     double vio_t = vio_msg->header.stamp.toSec();
     printf("vio t: %f, loam t: %f \n", vio_t, t);
-    // 100ms sync tolerance
-    if(vio_t >= t - 0.05 && vio_t <= t + 0.05)
+    // 10ms sync tolerance  0.05
+    if(vio_t >= t - 0.01 && vio_t <= t + 0.01)
     {
         Eigen::Vector3d vio_t(vio_msg->pose.pose.position.x, vio_msg->pose.pose.position.y, vio_msg->pose.pose.position.z);
         Eigen::Quaterniond vio_q;
